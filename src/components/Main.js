@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export const Main = () => {
-  const API_KEY = "83466769170e3aae1a511f940e229f8d";
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
   const [weather, setWeather] = useState("");
   const [temperature, setTemperature] = useState(0);
   const [cityName, setCityName] = useState("");
+
+  const API_KEY = "83466769170e3aae1a511f940e229f8d";
+  const API_URL = `https://api.openweathermap.org/data/2.5/weather?units=metric&lang=es&lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
 
   const dateBuilder = (d) => {
     let months = [
@@ -49,9 +51,7 @@ export const Main = () => {
   const fetchWeather = async () => {
      navigator.geolocation.getCurrentPosition(savePositionToState);
 
-    const res = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?units=metric&lang=es&lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
-    );
+    const res = await axios.get(API_URL);
     setTemperature(res.data.main.temp);
     setCityName(res.data.name);
     setWeather(res.data.weather[0].main);
@@ -76,7 +76,7 @@ export const Main = () => {
             <h5 className="weather">{weather}</h5>
           </div>
 
-          {/* <div onLoad={geoLocalitation()}></div> */}
+         
         </div>
       </div>
     );

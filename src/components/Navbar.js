@@ -4,12 +4,12 @@ import { NavLink } from 'react-router-dom'
 export const Navbar = () => {
   return (
     <nav className='button-group'>
-        <NavLink exact to='/'>
+        <NavLink to='/'>
         <button className='btn btn-primary btn-lg'>
             Actual Location
         </button>
         </NavLink>
-        <NavLink exact to='/search-location'>
+        <NavLink to='/search-location'>
         <button className='btn btn-success btn-lg'>
             Search Location
         </button>

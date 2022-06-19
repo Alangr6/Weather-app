@@ -15,8 +15,9 @@ export const Search = () => {
           setWeather(result);
           setQuery("");
           console.log(result);
+         
         });
-    }
+    }  
   };
 
   const dateBuilder = (d) => {
@@ -51,7 +52,10 @@ export const Search = () => {
 
     return `${day} ${date} ${month} ${year}`;
   };
-
+  
+  if (weather.message == "city not found") {
+    return <h1 className="city">city not found</h1>
+  } else
   return (
     <div
       className={
